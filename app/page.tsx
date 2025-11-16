@@ -239,10 +239,10 @@ export default function Home() {
       <section className="relative flex min-h-[100vh] sm:min-h-[110vh] w-full items-center justify-center overflow-hidden">
         {/* Hero Content */}
         <div className="relative z-10 w-full pt-20 pb-12 px-4 sm:pt-24 sm:pb-16 sm:px-6 md:pt-28 md:pb-20 md:px-8 lg:pt-32 lg:pb-24 lg:px-12 xl:pt-36 xl:pb-28 xl:px-16 2xl:px-20">
-          <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px]">
-            <div className="flex flex-col items-center text-center gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:items-center lg:text-left lg:gap-4 xl:gap-6">
+          <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] hero-container-wrapper-1600">
+            <div className="flex flex-col items-center text-center gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:items-center lg:text-left lg:gap-4 xl:gap-6 hero-container-1600">
               {/* Text Content */}
-              <div className="flex-1 w-full max-w-4xl 2xl:max-w-5xl order-2 lg:order-1">
+              <div className="flex-1 w-full max-w-4xl 2xl:max-w-5xl order-2 lg:order-1 hero-text-1600">
                 <h1 
                   ref={headlineRef}
                   className="mb-6 sm:mb-8 md:mb-10 flex flex-col justify-center lg:justify-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight sm:leading-none tracking-tight text-foreground title-1600"

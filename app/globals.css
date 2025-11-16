@@ -272,6 +272,21 @@ body {
     width: 550px !important;
     height: 550px !important;
   }
+  
+  .hero-container-1600 {
+    gap: 0.25rem !important; /* Very small gap to bring title close to Lottie icon */
+  }
+  
+  .hero-text-1600 {
+    max-width: none !important; /* Remove max-width constraint to allow text to expand closer to icon */
+    flex: 1 1 auto !important;
+    padding-right: 0.5rem !important; /* Small padding for fine spacing control */
+  }
+  
+  /* Reduce container max-width to bring content closer together */
+  .hero-container-wrapper-1600 {
+    max-width: 1200px !important;
+  }
 }
 
 /* Optimize for large screens (1920px+) */
