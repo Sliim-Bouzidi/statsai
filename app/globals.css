@@ -171,16 +171,38 @@
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 }
 
+html {
+  background-color: oklch(0.2223 0.0060 271.1393);
+  color: oklch(0.9551 0 0);
+}
+
 body {
   letter-spacing: var(--tracking-normal);
+  background-color: oklch(0.2223 0.0060 271.1393);
+  color: oklch(0.9551 0 0);
+}
+
+html:not(.dark) body {
+  background-color: oklch(0.9940 0 0);
+  color: oklch(0 0 0);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: oklch(0.2223 0.0060 271.1393) !important;
+    color: oklch(0.9551 0 0) !important;
+  }
   body {
     @apply bg-background text-foreground;
+    background-color: oklch(0.2223 0.0060 271.1393) !important;
+    color: oklch(0.9551 0 0) !important;
+  }
+  html:not(.dark) body {
+    background-color: oklch(0.9940 0 0) !important;
+    color: oklch(0 0 0) !important;
   }
 }
 

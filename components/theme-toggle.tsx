@@ -14,13 +14,13 @@ export function ThemeToggle() {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
     if (savedTheme) {
       setTheme(savedTheme)
+      // Ensure the class matches (script may have already set it)
       document.documentElement.classList.toggle("dark", savedTheme === "dark")
     } else {
-      // Check system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-      const initialTheme = prefersDark ? "dark" : "light"
-      setTheme(initialTheme)
-      document.documentElement.classList.toggle("dark", initialTheme === "dark")
+      // Default to dark mode
+      setTheme("dark")
+      // Ensure the class matches (script may have already set it)
+      document.documentElement.classList.add("dark")
     }
   }, [])
 
