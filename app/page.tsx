@@ -23,6 +23,7 @@ import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Quote, Twitter, Linkedin, Github, Sparkles, Menu, X } from "lucide-react"
 import { DotLottieReact } from "@lottiefiles/dotlottie-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -163,6 +164,7 @@ export default function Home() {
 
           {/* CTA Buttons - Desktop */}
           <div className="hidden md:flex items-center gap-2 lg:gap-3">
+            <ThemeToggle />
             <Button variant="secondary" size="default" className="text-sm lg:text-base">
               Login
             </Button>
@@ -224,6 +226,9 @@ export default function Home() {
               Docs
             </a>
             <div className="pt-4 space-y-3 border-t border-border/40">
+              <div className="flex justify-center pb-2">
+                <ThemeToggle />
+              </div>
               <Button variant="secondary" className="w-full" onClick={() => setMobileMenuOpen(false)}>
                 Login
               </Button>
