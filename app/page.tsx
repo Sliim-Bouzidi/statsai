@@ -240,12 +240,12 @@ export default function Home() {
         {/* Hero Content */}
         <div className="relative z-10 w-full pt-20 pb-12 px-4 sm:pt-24 sm:pb-16 sm:px-6 md:pt-28 md:pb-20 md:px-8 lg:pt-32 lg:pb-24 lg:px-12 xl:pt-36 xl:pb-28 xl:px-16 2xl:px-20">
           <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px]">
-            <div className="flex flex-col items-center text-center gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:items-center lg:text-left lg:gap-12 xl:gap-16">
+            <div className="flex flex-col items-center text-center gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:items-center lg:text-left lg:gap-4 xl:gap-6">
               {/* Text Content */}
               <div className="flex-1 w-full max-w-4xl 2xl:max-w-5xl order-2 lg:order-1">
                 <h1 
                   ref={headlineRef}
-                  className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap justify-center lg:justify-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight sm:leading-none tracking-tight text-foreground"
+                  className="mb-6 sm:mb-8 md:mb-10 flex flex-col justify-center lg:justify-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight sm:leading-none tracking-tight text-foreground title-1600"
                   style={{ lineHeight: "1.1" }}
                 >
                   {words.map((word, wordIndex) => {
@@ -253,7 +253,7 @@ export default function Home() {
                     return (
                       <div
                         key={wordIndex}
-                        className="overflow-hidden inline-block"
+                        className="overflow-hidden block"
                       >
                         {word.split("").map((char, charIndex) => (
                           <span
@@ -263,9 +263,6 @@ export default function Home() {
                             {char}
                           </span>
                         ))}
-                        {wordIndex < words.length - 1 && (
-                          <span className="char inline-block">{"\u00A0"}</span>
-                        )}
                       </div>
                     )
                   })}
@@ -279,7 +276,7 @@ export default function Home() {
               
               {/* Lottie Animation */}
               <div className="w-full lg:w-auto lg:flex-shrink-0 flex justify-center lg:justify-start order-1 lg:order-2 mb-4 sm:mb-0">
-                <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px] xl:w-[550px] xl:h-[550px] 2xl:w-[650px] 2xl:h-[650px]">
+                <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] lottie-1600">
                   <DotLottieReact
                     src="https://lottie.host/bf287802-0987-44b9-b9d1-b430ae2def6e/FzWeS0DLRz.lottie"
                     loop

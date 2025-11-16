@@ -262,6 +262,18 @@ body {
   }
 }
 
+/* Optimize for 1600x900 screens */
+@media (min-width: 1400px) and (max-width: 1700px) {
+  .title-1600 {
+    font-size: 5.5rem !important; /* Bigger than before, closer to 2xl:text-8xl (6rem) */
+  }
+  
+  .lottie-1600 {
+    width: 550px !important;
+    height: 550px !important;
+  }
+}
+
 /* Optimize for large screens (1920px+) */
 @media (min-width: 1920px) {
   .container {
