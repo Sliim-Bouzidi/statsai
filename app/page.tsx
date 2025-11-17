@@ -578,7 +578,10 @@ export default function Home() {
                 </ul>
               </CardContent>
               <CardFooter className="mt-auto">
-                <Button variant="outline" className="w-full">
+                <Button
+                  variant="outline"
+                  className="w-full bg-black text-white hover:bg-black/90 dark:bg-input/30 dark:text-secondary-foreground dark:hover:bg-input/50"
+                >
                   Start free trial
                 </Button>
               </CardFooter>
@@ -660,7 +663,10 @@ export default function Home() {
                 </ul>
               </CardContent>
               <CardFooter className="mt-auto">
-                <Button variant="outline" className="w-full">
+                <Button
+                  variant="outline"
+                  className="w-full bg-black text-white hover:bg-black/90 dark:bg-input/30 dark:text-secondary-foreground dark:hover:bg-input/50"
+                >
                   Contact sales
                 </Button>
               </CardFooter>
@@ -672,7 +678,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="relative w-full py-16 sm:py-24 md:py-32 lg:py-40">
         <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-[#252132]/80 p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 text-center backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-transparent dark:bg-[#231F2E] p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 text-center backdrop-blur-xl">
             <div className="relative z-10 mx-auto max-w-4xl 2xl:max-w-5xl">
               <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white px-4">
                 Ready to unlock your data's potential?

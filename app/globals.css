@@ -264,6 +264,16 @@ html:not(.dark) body {
   will-change: transform;
 }
 
+html:not(.dark) #pricing [data-slot="button"][data-variant="outline"] {
+  background-color: #000;
+  color: #fff;
+  border-color: transparent;
+}
+
+html:not(.dark) #pricing [data-slot="button"][data-variant="outline"]:hover {
+  background-color: #000000e6;
+}
+
 /* Responsive improvements */
 @media (max-width: 640px) {
   .container {
