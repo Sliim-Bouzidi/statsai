@@ -44,8 +44,10 @@ export default function Home() {
   const headlineRef = useRef<HTMLDivElement>(null)
   const testimonialsRef = useRef<HTMLElement>(null)
   const unicornStudioRef = useRef<HTMLDivElement>(null)
+  const unicornStudio2Ref = useRef<HTMLDivElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [unicornStudioVisible, setUnicornStudioVisible] = useState(false)
+  const [unicornStudioVisible, setUnicornStudioVisible] = useState(true)
+  const [unicornStudio2Visible, setUnicornStudio2Visible] = useState(true)
 
   useEffect(() => {
     if (headlineRef.current) {
@@ -116,60 +118,34 @@ export default function Home() {
     }
   }, [])
 
-  // Load Unicorn Studio script with performance optimizations
+  // Load Unicorn Studio script
   useEffect(() => {
     if (!window.UnicornStudio) {
       window.UnicornStudio = { isInitialized: false }
       
-      // Preload the script for better performance
-      const preloadLink = document.createElement("link")
-      preloadLink.rel = "preload"
-      preloadLink.href = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.35/dist/unicornStudio.umd.js"
-      preloadLink.as = "script"
-      document.head.appendChild(preloadLink)
-      
       const script = document.createElement("script")
+      script.type = "text/javascript"
       script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.35/dist/unicornStudio.umd.js"
-      script.async = true
-      script.defer = true
       
       script.onload = function() {
         if (!window.UnicornStudio.isInitialized) {
-          // Use requestAnimationFrame for smoother initialization
-          requestAnimationFrame(() => {
-            UnicornStudio.init()
-            window.UnicornStudio.isInitialized = true
-          })
+          setTimeout(() => {
+            if (typeof UnicornStudio !== 'undefined') {
+              UnicornStudio.init()
+              window.UnicornStudio.isInitialized = true
+            }
+          }, 100)
         }
+      }
+      
+      script.onerror = function() {
+        console.error('Failed to load Unicorn Studio script')
       }
       
       document.head.appendChild(script)
     }
   }, [])
 
-  // Intersection Observer for lazy loading Unicorn Studio
-  useEffect(() => {
-    if (!unicornStudioRef.current) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !unicornStudioVisible) {
-            setUnicornStudioVisible(true)
-            observer.disconnect()
-          }
-        })
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '100px'
-      }
-    )
-
-    observer.observe(unicornStudioRef.current)
-
-    return () => observer.disconnect()
-  }, [unicornStudioVisible])
 
   const headlineText = "INTELLIGENT ANALYTICS, FINALLY."
   const words = headlineText.split(" ")
@@ -841,6 +817,75 @@ export default function Home() {
                     </div>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Creative Showcase Section */}
+      <section className="relative w-full py-16 sm:py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            {/* Content */}
+            <div className="w-full lg:w-1/2 order-2 lg:order-1">
+              <Badge variant="outline" className="mb-4 text-xs uppercase tracking-wide">
+                Creative Visualization
+              </Badge>
+              <h2 className="mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+                Art Meets Analytics
+              </h2>
+              <p className="mb-8 text-lg text-muted-foreground leading-relaxed">
+                Transform complex data into beautiful, interactive art. Our creative visualization engine turns numbers into compelling visual narratives that captivate and inform.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                  <p className="text-muted-foreground">Dynamic visual storytelling with real-time data</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                  <p className="text-muted-foreground">Interactive elements that engage your audience</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                  <p className="text-muted-foreground">Customizable themes and artistic styles</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Unicorn Studio Project */}
+            <div className="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center">
+              <div className="w-80 h-80 sm:w-96 sm:h-96 md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] overflow-hidden rounded-xl border border-border bg-background/50 backdrop-blur-sm">
+                <div 
+                  ref={unicornStudio2Ref}
+                  className="w-full h-full relative"
+                  style={{ 
+                    willChange: 'transform',
+                    transform: 'translateZ(0)',
+                    backfaceVisibility: 'hidden',
+                    perspective: '1000px'
+                  }}
+                >
+                  {unicornStudio2Visible ? (
+                    <div 
+                      data-us-project="xmjLh8G4UmT2AYG2pquS" 
+                      className="w-full h-full"
+                      style={{
+                        willChange: 'transform',
+                        transform: 'translateZ(0)',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                      <div className="text-center">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-3"></div>
+                        <p className="text-sm text-muted-foreground">Loading...</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
