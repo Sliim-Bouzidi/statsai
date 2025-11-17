@@ -1,6 +1,19 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+
+// Declare global types for UnicornStudio
+declare global {
+  interface Window {
+    UnicornStudio: {
+      isInitialized: boolean
+      init?: () => void
+    }
+  }
+  const UnicornStudio: {
+    init: () => void
+  }
+}
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
@@ -98,6 +111,22 @@ export default function Home() {
           trigger.kill()
         }
       })
+    }
+  }, [])
+
+  // Load Unicorn Studio script
+  useEffect(() => {
+    if (!window.UnicornStudio) {
+      window.UnicornStudio = { isInitialized: false }
+      const script = document.createElement("script")
+      script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.35/dist/unicornStudio.umd.js"
+      script.onload = function() {
+        if (!window.UnicornStudio.isInitialized) {
+          UnicornStudio.init()
+          window.UnicornStudio.isInitialized = true
+        }
+      }
+      ;(document.head || document.body).appendChild(script)
     }
   }, [])
 
@@ -723,6 +752,30 @@ export default function Home() {
                   className="w-full h-full"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Unicorn Studio Section */}
+      <section className="relative w-full py-16 sm:py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
+              Experience Interactive Analytics
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Explore our interactive demo to see how StatsAI transforms your data into actionable insights.
+            </p>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="w-full max-w-[1440px] overflow-hidden rounded-xl border border-border bg-background/50 backdrop-blur-sm">
+              <div 
+                data-us-project="EU6RFsatDQvMPnL5YDi7" 
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[900px]"
+                style={{ minHeight: '400px' }}
+              />
             </div>
           </div>
         </div>
