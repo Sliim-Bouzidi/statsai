@@ -43,7 +43,9 @@ gsap.registerPlugin(ScrollTrigger)
 export default function Home() {
   const headlineRef = useRef<HTMLDivElement>(null)
   const testimonialsRef = useRef<HTMLElement>(null)
+  const unicornStudioRef = useRef<HTMLDivElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [unicornStudioVisible, setUnicornStudioVisible] = useState(false)
 
   useEffect(() => {
     if (headlineRef.current) {
@@ -114,21 +116,60 @@ export default function Home() {
     }
   }, [])
 
-  // Load Unicorn Studio script
+  // Load Unicorn Studio script with performance optimizations
   useEffect(() => {
     if (!window.UnicornStudio) {
       window.UnicornStudio = { isInitialized: false }
+      
+      // Preload the script for better performance
+      const preloadLink = document.createElement("link")
+      preloadLink.rel = "preload"
+      preloadLink.href = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.35/dist/unicornStudio.umd.js"
+      preloadLink.as = "script"
+      document.head.appendChild(preloadLink)
+      
       const script = document.createElement("script")
       script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.35/dist/unicornStudio.umd.js"
+      script.async = true
+      script.defer = true
+      
       script.onload = function() {
         if (!window.UnicornStudio.isInitialized) {
-          UnicornStudio.init()
-          window.UnicornStudio.isInitialized = true
+          // Use requestAnimationFrame for smoother initialization
+          requestAnimationFrame(() => {
+            UnicornStudio.init()
+            window.UnicornStudio.isInitialized = true
+          })
         }
       }
-      ;(document.head || document.body).appendChild(script)
+      
+      document.head.appendChild(script)
     }
   }, [])
+
+  // Intersection Observer for lazy loading Unicorn Studio
+  useEffect(() => {
+    if (!unicornStudioRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !unicornStudioVisible) {
+            setUnicornStudioVisible(true)
+            observer.disconnect()
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '100px'
+      }
+    )
+
+    observer.observe(unicornStudioRef.current)
+
+    return () => observer.disconnect()
+  }, [unicornStudioVisible])
 
   const headlineText = "INTELLIGENT ANALYTICS, FINALLY."
   const words = headlineText.split(" ")
@@ -772,10 +813,35 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="w-full max-w-[1440px] overflow-hidden rounded-xl border border-border bg-background/50 backdrop-blur-sm">
               <div 
-                data-us-project="EU6RFsatDQvMPnL5YDi7" 
-                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[900px]"
-                style={{ minHeight: '400px' }}
-              />
+                ref={unicornStudioRef}
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[900px] relative"
+                style={{ 
+                  minHeight: '400px',
+                  willChange: 'transform',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                  perspective: '1000px'
+                }}
+              >
+                {unicornStudioVisible ? (
+                  <div 
+                    data-us-project="EU6RFsatDQvMPnL5YDi7" 
+                    className="w-full h-full"
+                    style={{
+                      willChange: 'transform',
+                      transform: 'translateZ(0)',
+                      backfaceVisibility: 'hidden'
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                    <div className="text-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                      <p className="text-muted-foreground">Loading interactive demo...</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
