@@ -282,12 +282,20 @@ export default function Home() {
               {/* Lottie Animation */}
               <div className="w-full lg:w-auto lg:flex-shrink-0 flex justify-center lg:justify-start order-1 lg:order-2 mb-4 sm:mb-0">
                 <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] lottie-1600">
-                  <DotLottieReact
-                    src="https://lottie.host/bf287802-0987-44b9-b9d1-b430ae2def6e/FzWeS0DLRz.lottie"
-                    loop
-                    autoplay
-                    className="w-full h-full"
-                  />
+                {/*
+                <DotLottieReact
+                  src="https://lottie.host/bf287802-0987-44b9-b9d1-b430ae2def6e/FzWeS0DLRz.lottie"
+                  loop
+                  autoplay
+                  className="w-full h-full"
+                />
+                */}
+                <DotLottieReact
+                  src="https://lottie.host/35e0634a-4dfe-467f-a922-ce2b249e15a7/EmLmO4LIth.lottie"
+                  loop
+                  autoplay
+                  className="w-full h-full"
+                />
                 </div>
               </div>
             </div>
@@ -671,6 +679,51 @@ export default function Home() {
                 </Button>
               </CardFooter>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* New Interactive Section */}
+      <section className="relative w-full py-16 sm:py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            {/* Content */}
+            <div className="w-full lg:w-1/2 order-2 lg:order-1">
+              <Badge variant="outline" className="mb-4 text-xs uppercase tracking-wide">
+                Why teams switch
+              </Badge>
+              <h3 className="mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+                Keep leadership synced on every revenue move
+              </h3>
+              <p className="mb-8 text-lg text-muted-foreground leading-relaxed">
+                StatsAI surfaces the trends that matter, not more dashboards. Share-ready snapshots, automated
+                forecasts, and anomaly alerts keep execs aligned without extra meetings.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button size="lg" className="px-8 bg-primary text-white hover:bg-primary/90">
+                  Launch Workspace
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="px-8 border-border bg-background hover:bg-accent hover:text-accent-foreground"
+                >
+                  Explore Playbook
+                </Button>
+              </div>
+            </div>
+            
+            {/* Lottie Animation */}
+            <div className="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
+                <DotLottieReact
+                  src="https://lottie.host/bf287802-0987-44b9-b9d1-b430ae2def6e/FzWeS0DLRz.lottie"
+                  loop
+                  autoplay
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
