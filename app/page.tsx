@@ -1031,7 +1031,15 @@ export default function Home() {
               © {new Date().getFullYear()} StatsAI. All rights reserved.
             </p>
             <p className="flex items-center justify-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
-              Made with <Sparkles className="size-3 sm:size-4 text-primary animate-sparkle" /> By Slim Bouzidi
+              Made with <Sparkles className="size-3 sm:size-4 text-primary animate-sparkle" /> By{" "}
+              <a 
+                href="https://www.linkedin.com/in/slim-bouzidi/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors underline underline-offset-2"
+              >
+                Slim Bouzidi
+              </a>
             </p>
           </div>
         </div>
